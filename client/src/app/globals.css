@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/webfonts/Vazirmatn[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-vazir: "Vazir", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+:root {
+  --background: #dddeee;
+  /* سفید خاص */
+  --color: #3f415d; 
+  /* بنفش خانوم مصلحی خاکستری اقا فدوس */
+  --blur: #434343;
+  /* مات خودم */
+  --text: #006a9c;
+  /* آبی */
+}
+
+
+body {
+  background: var(--background);
+  background: white;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  direction: rtl;
+  /* height: 4000px; */
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    transform .7s cubic-bezier(.22,.61,.36,1),
+    box-shadow .7s ease;
+}
+
+.project-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    130deg,
+    rgba(255,255,255,.18),
+    transparent 45%
+  );
+  opacity:0;
+  transition:.6s;
+  z-index:2;
+  pointer-events:none;
+}
+
+.project-card:hover{
+  transform:
+      perspective(1800px)
+      rotateX(5deg)
+      rotateY(-7deg)
+      translateY(-16px)
+      scale(1.02);
+
+  box-shadow:
+      0 45px 90px rgba(0,0,0,.18),
+      0 20px 35px rgba(0,0,0,.08);
+}
+
+.project-card:hover::before{
+  opacity:1;
+}
